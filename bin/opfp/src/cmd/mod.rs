@@ -5,7 +5,9 @@ use color_eyre::eyre::{eyre, Result};
 use tracing::Level;
 
 pub mod from_op_program;
+pub mod from_op_succinct;
 pub mod run_op_program;
+pub mod run_op_succinct;
 pub mod util;
 
 /// Main CLI
@@ -24,6 +26,10 @@ pub enum Commands {
     FromOpProgram(from_op_program::FromOpProgram),
     /// Runs the op-program implementation with a given fixture.
     RunOpProgram(run_op_program::RunOpProgram),
+    /// Generates an SP1Stdin fixture via the OP Succinct host pipeline.
+    FromOpSuccinct(from_op_succinct::FromOpSuccinct),
+    /// Executes an SP1Stdin fixture through the SP1 CPU prover and outputs stats.
+    RunOpSuccinct(run_op_succinct::RunOpSuccinct),
 }
 
 impl Cli {
@@ -32,6 +38,8 @@ impl Cli {
         match &self.command {
             Commands::FromOpProgram(cmd) => cmd.v,
             Commands::RunOpProgram(cmd) => cmd.v,
+            Commands::FromOpSuccinct(cmd) => cmd.v,
+            Commands::RunOpSuccinct(cmd) => cmd.v,
         }
     }
 
@@ -56,6 +64,8 @@ impl Cli {
         match self.command {
             Commands::FromOpProgram(cmd) => cmd.run().await,
             Commands::RunOpProgram(cmd) => cmd.run().await,
+            Commands::FromOpSuccinct(cmd) => cmd.run().await,
+            Commands::RunOpSuccinct(cmd) => cmd.run().await,
         }
     }
 }

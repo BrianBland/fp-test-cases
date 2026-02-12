@@ -27,17 +27,38 @@ shellwords = "1"
 reqwest = { version = "0.12", features = ["stream"] }
 tracing-subscriber = "0.3.18"
 byteorder = "1.5.0"
+anyhow = "1.0.86"
+cfg-if = "1.0.0"
+num-format = "0.4.4"
+async-trait = "0.1.80"
 
-# Alloy Dependencies
-alloy-primitives = { version = "0.8" }
-alloy-eips = { version = "0.3" }
-alloy-provider = { version = "0.2" }
+# Alloy Dependencies (matching op-succinct v1.4)
+alloy-primitives = "1.4.1"
+alloy-eips = { version = "1.4", default-features = false }
+alloy-provider = "1.4"
 
-# OP Types
-superchain-registry = "0.3.4"
-superchain-primitives = "0.3.4"
-kona-primitives = { git = "https://github.com/ethereum-optimism/kona", version = "0.0.2", features = ["online"] }
-kona-derive = { git = "https://github.com/ethereum-optimism/kona", version = "0.0.3", features = ["online"] }
+# Kona (from op-rs/kona, tag kona-client/v1.2.7 — matches op-succinct)
+kona-derive = { git = "https://github.com/op-rs/kona", tag = "kona-client/v1.2.7", default-features = false }
+kona-genesis = { git = "https://github.com/op-rs/kona", tag = "kona-client/v1.2.7", default-features = false }
+kona-protocol = { git = "https://github.com/op-rs/kona", tag = "kona-client/v1.2.7", default-features = false }
+kona-registry = { git = "https://github.com/op-rs/kona", tag = "kona-client/v1.2.7", default-features = false }
+
+# OP Succinct (PR #798 branch — SP1 v6)
+op-succinct-host-utils = { git = "https://github.com/succinctlabs/op-succinct", branch = "fakedev9999/prover-mainnet-ready" }
+op-succinct-client-utils = { git = "https://github.com/succinctlabs/op-succinct", branch = "fakedev9999/prover-mainnet-ready" }
+op-succinct-proof-utils = { git = "https://github.com/succinctlabs/op-succinct", branch = "fakedev9999/prover-mainnet-ready" }
+op-succinct-ethereum-host-utils = { git = "https://github.com/succinctlabs/op-succinct", branch = "fakedev9999/prover-mainnet-ready" }
+op-succinct-elfs = { git = "https://github.com/succinctlabs/op-succinct", branch = "fakedev9999/prover-mainnet-ready" }
+
+# SP1 v6
+sp1-sdk = { version = "6.0.0-rc.1", features = ["blocking"] }
 
 # Internal
 fp-test-fixtures = { path = "crates/fp-test-fixtures" }
+
+[patch.crates-io]
+sha2 = { git = "https://github.com/sp1-patches/RustCrypto-hashes", package = "sha2", tag = "patch-sha2-0.10.9-sp1-6.0.0-rc.1" }
+sha3 = { git = "https://github.com/sp1-patches/RustCrypto-hashes", package = "sha3", tag = "patch-sha3-0.10.8-sp1-6.0.0-rc.1" }
+substrate-bn = { git = "https://github.com/sp1-patches/bn", tag = "patch-0.6.0-sp1-6.0.0-rc.1", package = "substrate-bn-succinct-rs" }
+p256 = { git = "https://github.com/sp1-patches/elliptic-curves", tag = "patch-p256-13.2-sp1-6.0.0-rc.1" }
+k256 = { git = "https://github.com/sp1-patches/elliptic-curves", tag = "patch-k256-13.4-sp1-6.0.0-rc.1" }

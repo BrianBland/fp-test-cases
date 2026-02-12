@@ -19,6 +19,10 @@ futures.workspace = true
 color-eyre.workspace = true
 tracing-subscriber.workspace = true
 byteorder.workspace = true
+anyhow.workspace = true
+cfg-if.workspace = true
+num-format.workspace = true
+async-trait.workspace = true
 
 # CLI
 clap.workspace = true
@@ -30,6 +34,13 @@ alloy-provider.workspace = true
 
 # OP Types
 fp-test-fixtures.workspace = true
-superchain-primitives.workspace = true
-kona-derive.workspace = true
-superchain-registry.workspace = true
+kona-genesis.workspace = true
+kona-registry.workspace = true
+kona-protocol.workspace = true
+
+# OP Succinct
+op-succinct-host-utils.workspace = true
+op-succinct-client-utils.workspace = true
+op-succinct-proof-utils.workspace = true
+op-succinct-ethereum-host-utils.workspace = true
+sp1-sdk.workspace = true

@@ -3,7 +3,7 @@
 use std::collections::BTreeMap;
 
 use alloy_primitives::{Address, BlockHash, BlockNumber, Bytes, ChainId, B256, U256};
-use superchain_primitives::RollupConfig;
+use kona_genesis::RollupConfig;
 use serde::{Deserialize, Serialize};
 use serde_repr::{Deserialize_repr, Serialize_repr};
 
