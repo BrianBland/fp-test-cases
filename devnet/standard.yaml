@@ -1,16 +1,26 @@
 optimism_package:
   chains:
-    - participants:
-      - el_type: op-geth
-        cl_type: op-node
+    opkurtosis:
+      participants:
+        node0:
+          sequencer: true
+          el:
+            type: op-geth
+          cl:
+            type: op-node
       network_params:
+        network: "kurtosis"
+        network_id: "2151908"
+        seconds_per_slot: 2
         granite_time_offset: 0
+        fund_dev_accounts: true
 ethereum_package:
   participants:
   - el_type: geth
     cl_type: teku
   network_params:
     preset: minimal
+    genesis_delay: 5
     additional_preloaded_contracts: '
       {
         "0x4e59b44847b379578588920cA78FbF26c0B4956C": {
@@ -19,8 +29,4 @@ ethereum_package:
           "storage": {},
           "nonce": "1"
         }
-      }
-    '
-  additional_services:
-    - tx_spammer
-    - blob_spammer
+      }'

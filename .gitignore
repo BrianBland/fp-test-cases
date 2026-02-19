@@ -14,8 +14,10 @@ docs/
 .env
 
 /op-genesis-configs/
+/op-deployer-configs/
 /target/
 
 # Output files
 *.out
 *.json
+!configs/L1/*.json

@@ -1,0 +1,8 @@
+[package]
+name = "pairing-guest"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+sp1-zkvm = "6.0.0-rc.1"
+substrate-bn = { git = "https://github.com/sp1-patches/bn", tag = "patch-0.6.0-sp1-6.0.0-rc.1", package = "substrate-bn-succinct-rs" }

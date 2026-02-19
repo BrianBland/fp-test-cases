@@ -1,0 +1,8 @@
+[package]
+name = "pairing-guest-v5"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+sp1-zkvm = "=5.2.4"
+substrate-bn = "0.6.0"

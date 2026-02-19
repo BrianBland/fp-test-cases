@@ -1,0 +1,50 @@
+[package]
+name = "v5-baseline"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+# SP1 v5
+sp1-sdk = { version = "=5.2.4", default-features = false, features = ["network"] }
+
+# OP Succinct (path deps into lincoln workspace)
+op-succinct-host-utils = { path = "../../../../op-succinct/lincoln/utils/host" }
+op-succinct-proof-utils = { path = "../../../../op-succinct/lincoln/utils/proof" }
+op-succinct-client-utils = { path = "../../../../op-succinct/lincoln/utils/client" }
+
+# General
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+clap = { version = "4", features = ["derive"] }
+tokio = { version = "1", features = ["full"] }
+num-format = "0.4.4"
+anyhow = "1"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["fmt"] }
+
+[workspace]
+
+# Must match lincoln's patches exactly
+[patch.crates-io]
+substrate-bn = { git = "https://github.com/sp1-patches/bn", tag = "patch-0.6.0-sp1-5.0.0" }
+sha2 = { git = "https://github.com/sp1-patches/RustCrypto-hashes", package = "sha2", tag = "patch-sha2-0.10.9-sp1-4.0.0" }
+sha3 = { git = "https://github.com/sp1-patches/RustCrypto-hashes", package = "sha3", tag = "patch-sha3-0.10.8-sp1-4.0.0" }
+tiny-keccak = { git = "https://github.com/sp1-patches/tiny-keccak", tag = "patch-2.0.2-sp1-4.0.0" }
+p256 = { git = "https://github.com/sp1-patches/elliptic-curves", tag = "patch-p256-13.2-sp1-5.0.0" }
+k256 = { git = "https://github.com/sp1-patches/elliptic-curves", tag = "patch-k256-13.4-sp1-5.0.0" }
+
+# Reth patches from lincoln (transitive deps from kona)
+[patch."https://github.com/paradigmxyz/reth"]
+reth-chainspec = { git = "https://github.com/succinctlabs/reth", branch = "v1.9.3-kona" }
+reth-consensus = { git = "https://github.com/succinctlabs/reth", branch = "v1.9.3-kona" }
+reth-errors = { git = "https://github.com/succinctlabs/reth", branch = "v1.9.3-kona" }
+reth-ethereum-forks = { git = "https://github.com/succinctlabs/reth", branch = "v1.9.3-kona" }
+reth-ethereum-primitives = { git = "https://github.com/succinctlabs/reth", branch = "v1.9.3-kona" }
+reth-execution-errors = { git = "https://github.com/succinctlabs/reth", branch = "v1.9.3-kona" }
+reth-execution-types = { git = "https://github.com/succinctlabs/reth", branch = "v1.9.3-kona" }
+reth-primitives = { git = "https://github.com/succinctlabs/reth", branch = "v1.9.3-kona" }
+reth-primitives-traits = { git = "https://github.com/succinctlabs/reth", branch = "v1.9.3-kona" }
+reth-storage-api = { git = "https://github.com/succinctlabs/reth", branch = "v1.9.3-kona" }
+reth-storage-errors = { git = "https://github.com/succinctlabs/reth", branch = "v1.9.3-kona" }
+reth-trie = { git = "https://github.com/succinctlabs/reth", branch = "v1.9.3-kona" }
+reth-trie-common = { git = "https://github.com/succinctlabs/reth", branch = "v1.9.3-kona" }

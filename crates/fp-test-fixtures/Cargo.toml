@@ -19,7 +19,7 @@ color-eyre.workspace = true
 alloy-primitives.workspace = true
 
 # OP Types
-superchain-primitives.workspace = true
+kona-genesis.workspace = true
 
 [dev-dependencies]
 serde_json.workspace = true

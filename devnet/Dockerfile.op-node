@@ -1,0 +1,2 @@
+FROM op-node:local
+COPY devnet/l1-chain-config.json /etc/op-node/l1-chain-config.json
